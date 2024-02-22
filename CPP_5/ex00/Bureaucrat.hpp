@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:23:55 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/02/06 14:45:58 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:08:07 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,44 @@
 class Bureaucrat
 {
 	private:
-		std::string const name; 
 		int grade;
+		std::string const name; 
 
 	public:
 		Bureaucrat();
+		Bureaucrat(int tent_grade);
+		Bureaucrat(int tent_grade, std::string tent_name);
+		Bureaucrat(std::string tent_name);
 		~Bureaucrat();
+		
 		Bureaucrat & operator=(Bureaucrat const & src);
-		std::ostream & operator<<(Bureaucrat const & src);
 		Bureaucrat (Bureaucrat const & src);
 		
 		std::string getName() const;
 		int getGrade()const;
+		void IncrementeGrade();
+		void DecrementeGrade();
+
+		class Exception : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+
+		class GradeTooLowException : public Bureaucrat::Exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+		
+		class GradeTooHighException : public Bureaucrat::Exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 	
 };
+
+std::ostream & operator<<(std::ostream &o, Bureaucrat const &src);
 
 #endif
