@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:32:17 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/02/22 15:43:01 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:28:32 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,3 +88,4 @@ std::ostream & operator<<(std::ostream &o, Form const &src)
 	o << "Form: " << src.getName() << " is " << src.getSign() << " signed with a grade need to sign: " << src.getGradeSign() << " , a grade needed to execute: " << src.getGradeSign();
 	return (o);
 }
+
