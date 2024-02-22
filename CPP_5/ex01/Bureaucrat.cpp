@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:23:37 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/02/20 16:05:22 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:23:59 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,3 +123,21 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Cannot get a grade > 150!\n");
 }
+
+// ex01
+
+void Bureaucrat::signForm(Form &src)
+{
+	try
+	{
+		src.beSigned(*this);
+		std::cout << this->getName() << " signed " << src.getName() << std::endl;
+	}
+	catch (Form::Exception_parent &e)
+	{
+		std::cout << this->getName() << " couldn't sign " << src.getName() << " because " << e.what();
+	}
+}
+
+
+

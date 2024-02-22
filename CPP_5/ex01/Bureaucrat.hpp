@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:23:55 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/02/21 17:52:53 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/02/22 14:26:19 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -55,7 +57,7 @@ class Bureaucrat
 				virtual const char* what() const throw();
 		};
 
-
+//  ex01
 		void signForm(Form & src);
 	
 };
