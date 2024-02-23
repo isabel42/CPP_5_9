@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:18:06 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/02/23 11:44:15 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/02/23 11:54:26 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int main()
 {
 	std::cout << std::endl;
 	Bureaucrat *buro = new Bureaucrat(149, "Buro");
+	Bureaucrat *best = new Bureaucrat(1, "Best");
 	std::cout << std::endl << std::endl << "******** SHRUBBERY *********" << std::endl;
 	ShrubberyCreationForm *shrubbery = new ShrubberyCreationForm ("Shrubbery");
 	std::cout << "------\n";
@@ -31,6 +32,10 @@ int main()
 	{
 		std::cout << e.what();
 	}
+	best->executeForm(*shrubbery);
+	std::cout << std::endl;
+	best->signForm(*shrubbery);
+	best->executeForm(*shrubbery);
 	std::cout << "------" << std::endl;
 	delete shrubbery;
 
@@ -46,6 +51,10 @@ int main()
 	{
 		std::cout << e.what();
 	}
+	best->executeForm(*robo);
+	std::cout << std::endl;
+	best->signForm(*robo);
+	best->executeForm(*robo);
 	std::cout << "------" << std::endl;
 	delete robo;
 	
@@ -61,7 +70,12 @@ int main()
 	{
 		std::cout << e.what();
 	}
+	best->executeForm(*presi);
+	best->signForm(*presi);
+	std::cout << std::endl;
+	best->executeForm(*presi);
 	std::cout << "------" << std::endl;
 	delete presi;
 	delete buro;
+	delete best;
 }

@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:23:37 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/02/23 11:38:26 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/02/23 11:52:24 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void Bureaucrat::executeForm(AForm const &form)
 	}
 	catch(AForm::Exception_parent &e)
 	{
-		std::cout << *this << "could not execut " << form << " ." << std::endl;
+		std::cout << *this << " could not execute " << form << " ." << std::endl;
 	}
 }
 
