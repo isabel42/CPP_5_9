@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:32:17 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/02/22 18:05:00 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/02/23 10:15:30 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ const char* ShrubberyCreationForm::Exception_CannotOpen::what() const throw()
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
+	this->checkExec(executor);
 	std::string	tree = 
 		"     ccee88oo          \n"
 		"  C8O8O8Q8PoOb o8oo    \n"
@@ -66,15 +67,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		"  .....\\//||||\\....  \n";
 
 	std::string file_name = this->_target + "_shubbery";
-	this->checkExec(executor);
 	std::ofstream ofs(file_name);
 	if (!ofs.is_open())
 		throw(ShrubberyCreationForm::Exception_CannotOpen());
 	ofs << tree;
 }
-
-// std::ostream & operator<<(std::ostream &o, Form const &src)
-// {
-// 	o << "Form: " << src.getName() << " is " << src.getSign() << " signed with a grade need to sign: " << src.getGradeSign() << " , a grade needed to execute: " << src.getGradeSign();
-// 	return (o);
-// }

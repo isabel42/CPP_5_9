@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:32:28 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/02/22 18:07:03 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/02/23 10:53:06 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ class AForm
 		
 		AForm();
 		AForm(std::string name, int _grade_sign, int _grade_exec);
-		~AForm();
+		virtual ~AForm();
 		AForm(AForm & src);
 		AForm & operator=(AForm & src);
 

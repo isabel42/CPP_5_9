@@ -6,60 +6,62 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:18:06 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/02/22 18:20:55 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/02/23 11:44:15 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
-	// Bureaucrat *b1 = new Bureaucrat();
-	Bureaucrat *b2 = new Bureaucrat(15, "isa");
-	// Form *f1 = new AForm();
-	ShrubberyCreationForm *shubbyf1 = new ShrubberyCreationForm("Andres");
-	ShrubberyCreationForm *shubbyf2 = new ShrubberyCreationForm(*shubbyf1);
-	// Form *f2 = new AForm ("Andres", 49, 5);
-	// // try
-	// // {
-	// // 	Bureaucrat b3(249,"Bill");
-	// // }
-	// // catch (Bureaucrat::Exception &e)
-	// // {
-	// // 	std::cout << e.what();
-	// // }
-
-	// // try
-	// // {
-	// // 	Form f3("Miguel", 249, 5);
-	// // }
-	// // catch (Form::Exception_parent &e)
-	// // {
-	// // 	std::cout << e.what();
-	// // }
-
-	// // std::cout << *b1 << std::endl;
-	// // std::cout << *b2 << std::endl;
-	// std::cout << "------" << std::endl;
-	// std::cout << *f1 << std::endl;
-	// f1->beSigned(*b2);
-	// std::cout << *f1 << std::endl;
-	// b2->signForm(*f2);
-	// std::cout << "------" << std::endl;
-	b2->signForm(*shubbyf1);
-	b2->signForm(*shubbyf2);
+	std::cout << std::endl;
+	Bureaucrat *buro = new Bureaucrat(149, "Buro");
+	std::cout << std::endl << std::endl << "******** SHRUBBERY *********" << std::endl;
+	ShrubberyCreationForm *shrubbery = new ShrubberyCreationForm ("Shrubbery");
+	std::cout << "------\n";
+	buro->signForm(*shrubbery);
 	try
 	{	
-		shubbyf1->execute(*b2);
+		shrubbery->execute(*buro);
 	}
 	catch(AForm::Exception_parent &e)
 	{
 		std::cout << e.what();
 	}
+	std::cout << "------" << std::endl;
+	delete shrubbery;
+
+	std::cout << std::endl << std::endl << "******** ROBO *********" << std::endl;
+	RobotomyRequestForm *robo = new RobotomyRequestForm ("Robo");
+	std::cout << "------\n";
+	buro->signForm(*robo);
+	try
+	{	
+		robo->execute(*buro);
+	}
+	catch(AForm::Exception_parent &e)
+	{
+		std::cout << e.what();
+	}
+	std::cout << "------" << std::endl;
+	delete robo;
 	
-	// delete b1;
-	delete b2;
-	// delete f1;
-	// delete f2;
+	std::cout << std::endl << std::endl << "******** PRESI *********" << std::endl;
+	PresidentialPardonForm *presi = new PresidentialPardonForm ("Presi");
+	std::cout << "------\n";
+	buro->signForm(*presi);
+	try
+	{	
+		presi->execute(*buro);
+	}
+	catch(AForm::Exception_parent &e)
+	{
+		std::cout << e.what();
+	}
+	std::cout << "------" << std::endl;
+	delete presi;
+	delete buro;
 }

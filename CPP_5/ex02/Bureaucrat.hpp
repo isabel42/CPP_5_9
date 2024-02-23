@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:23:55 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/02/22 17:27:51 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/02/23 10:45:48 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ class Bureaucrat
 
 //  ex01
 		void signForm(AForm & src);
+
+// ex02
+		void executeForm(AForm const &form);
 	
 };
 
