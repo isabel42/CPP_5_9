@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:23:37 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/02/22 15:23:59 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/02/29 17:33:01 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void Bureaucrat::DecrementeGrade()
 	else
 	{
 		std::cout << "Decrementing by +1 bureaucrat " << *this;
-		this->grade = this->getGrade() - 1;
+		this->grade = this->getGrade() + 1;
 	}
 }
 

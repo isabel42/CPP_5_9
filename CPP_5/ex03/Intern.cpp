@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:23:37 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/02/23 12:54:53 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/02/29 17:39:01 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,9 @@ Intern::Intern(Intern const &src)
 
 Intern & Intern::operator=(Intern const &src)
 {
-	*this = src;
+	(void) src;
 	std::cout << "Surcharge operator = called." << std::endl;
 	return (*this);
-}
-
-AForm * Intern::makeForm(std::string form_name, std::string form_target)
-{
-	AForm *(*fct[3])(std::string target) = {new_robo, new_presi, new_shrub};
-	std::string	name[3] = {"robotomy request", "presidential pardon", "shrubbery creation"};
-
-	AForm *result = NULL;
-	for (int i = 0; i < 3; i++)
-	{
-		if (form_name == name[i])
-			result = fct[i](form_target);
-	}
-	if (result)
-		std::cout << "Intern has created " << *result << std::endl;
-	else
-		throw (Intern::Exception_FormNotFound());
-	return (result);
 }
 
 static AForm	*new_shrub(std::string target)
@@ -72,6 +54,24 @@ static AForm *new_presi(std::string target)
 {
 	AForm *presi = new PresidentialPardonForm(target);
 	return (presi);
+}
+
+AForm * Intern::makeForm(std::string form_name, std::string form_target)
+{
+	AForm *(*fct[3])(std::string target) = {new_robo, new_presi, new_shrub};
+	std::string	name[3] = {"robotomy request", "presidential pardon", "shrubbery creation"};
+
+	AForm *result = NULL;
+	for (int i = 0; i < 3; i++)
+	{
+		if (form_name == name[i])
+			result = fct[i](form_target);
+	}
+	if (result)
+		std::cout << "Intern has created " << *result << std::endl;
+	else
+		throw (Intern::Exception_FormNotFound());
+	return (result);
 }
 
 
