@@ -15,22 +15,30 @@
 
 #include <iostream>
 
-#include "Array.tpp"
 template<typename T>
 class Array 
 {
 	private: 
-		T* elements;
+		T* _elements;
+		std::size_t _size;
 
 	public: 
 		Array();
 		~Array();
 		Array(std::size_t n);
 		Array(Array const & src);
-		Array operator=(Array const & src);
+		Array<T> & operator=(Array<T> const & src);
 
 		std::size_t size() const;
+		T & operator[](std::size_t i);
+
+		class InvalidIndexException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 };
 
+#include "Array.tpp"
 
 #endif

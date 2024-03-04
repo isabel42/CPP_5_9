@@ -6,55 +6,70 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 19:00:14 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/03 18:58:24 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:36:23 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
- #include "Array.hpp"
-
-template<typename T> Array<T>::Array()
+template<typename T> 
+Array<T>::Array()
 {
-	this->elements = NULL;
+	this->_elements = NULL;
+	this->_size = 0;
 }
 
-Array::Array(std::size_t n)
+template<typename T> 
+Array<T>::Array(std::size_t n) : _elements(new T[n]), _size(n)
 {
-	this->elements = new T[n];
 }
 
-Array::~Array()
+template<typename T> 
+Array<T>::~Array()
 {
-	if (this->elements)
-		delete [] this->elements;
+	if (this->_elements)
+		delete [] this->_elements;
 	
 }
 
-Array & Array::operator=(const Array& src) {
+template<typename T> 
+Array<T> & Array<T>::operator=(Array<T> const & src)
+{
 	if (this == &src)
 		return *this;
-	if (this->size() != src.size())
+	if (this->_size != src._size)
 	{
-		if (this->elements != NULL)
-			delete[] this->elements;
-		this->elements = new T[src.size()];
+		if (this->_elements != NULL)
+			delete[] this->_elements;
+		this->_elements = new T[src._size];
 	}
-	for (std::size_t i = 0; i < this->_size; ++i)
+	for (std::size_t i = 0; i < src._size; ++i)
 	{
-		this->elemenets[i] = src.elements[i];
+		this->_elements[i] = src._elements[i];
 	}
 	return *this;
 }
 
-Array::Array(const Array& other) : elements(NULL) 
+template<typename T> 
+Array<T>::Array(const Array& other) : _elements(other._elements) , _size(other._size)
 {
 	*this = other;
 }
-
-std::size_t Array::size() const
+template<typename T> 
+std::size_t Array<T>::size() const
 {
-	std::size size = 0;
-	for (int i = 0;  this->elements[i]; ++i)
-		size ++;
-	return (size); 
+	return (this->_size); 
+}
+
+template<typename T> 
+const char* Array<T>::InvalidIndexException::what() const throw()
+{
+	return ("Wrong index");
+}
+
+template<typename T> 
+T & Array<T>::operator[](std::size_t i) 
+{
+	if (i > this->size() || i < 0)
+		throw(Array<T>::InvalidIndexException());
+	else
+		return (this->_elements[i]);
 }
