@@ -15,6 +15,7 @@
 
 #include <iostream>
 
+#include "Array.tpp"
 template<typename T>
 class Array 
 {
@@ -24,11 +25,11 @@ class Array
 	public: 
 		Array();
 		~Array();
-		// Array(std::size_t n);
-		// Array(Array const & src);
-		// Array operator=(Array const & src);
+		Array(std::size_t n);
+		Array(Array const & src);
+		Array operator=(Array const & src);
 
-		// int size() const;
+		std::size_t size() const;
 };
 
 

@@ -6,12 +6,12 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:23:55 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/02/23 12:44:13 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/03 17:03:42 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Intern_HPP
-# define Intern_HPP
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
 #include <iostream>
 #include "AForm.hpp"
