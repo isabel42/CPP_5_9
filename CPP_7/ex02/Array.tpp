@@ -6,20 +6,23 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 19:00:14 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/04 17:36:23 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:23:03 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 template<typename T> 
 Array<T>::Array()
 {
+	this->_elements = new T;
 	this->_elements = NULL;
 	this->_size = 0;
 }
 
 template<typename T> 
-Array<T>::Array(std::size_t n) : _elements(new T[n]), _size(n)
+Array<T>::Array(std::size_t n)  //: _elements(new T[n]), _size(n)
 {
+	this->_elements = new T[n];
+	this->_size = n;
 }
 
 template<typename T> 
@@ -38,8 +41,12 @@ Array<T> & Array<T>::operator=(Array<T> const & src)
 	if (this->_size != src._size)
 	{
 		if (this->_elements != NULL)
-			delete[] this->_elements;
+		{
+			std::cout << "this elements : " << this->_elements[0] << std::endl;
+			// delete[] this->_elements;
+		}
 		this->_elements = new T[src._size];
+		this->_size = src._size;
 	}
 	for (std::size_t i = 0; i < src._size; ++i)
 	{
@@ -73,3 +80,4 @@ T & Array<T>::operator[](std::size_t i)
 	else
 		return (this->_elements[i]);
 }
+

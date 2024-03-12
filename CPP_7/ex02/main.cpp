@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:18:06 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/04 17:31:01 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:23:19 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,15 @@ int main(int, char**)
     }
     //SCOPE
     { 
-		std::cout << "size of test"<< numbers.size() << std::endl;
+		std::cout << "size of numbers"<< numbers.size() << std::endl;
 		std::cout << "----" << std::endl;
         Array<int> tmp = numbers;
-        Array<int> test(tmp);
-		std::cout << "size of test"<< numbers.size() << std::endl;
-		std::cout << "size of test"<< tmp.size() << std::endl;
-		std::cout << "size of test"<< test.size() << std::endl;
+		std::cout << "size of numbers"<< numbers.size() << std::endl;
+		std::cout << "size of tmp"<< tmp.size() << std::endl;
+        // tmp = numbers;
+		std::cout << "size of numbers"<< numbers.size() << std::endl;
+		std::cout << "size of tmp"<< tmp.size() << std::endl;
+		// std::cout << "size of test"<< test.size() << std::endl;
     }
     for (int i = 0; i < MAX_VAL; i++)
     {
