@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 19:00:14 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/05 10:23:03 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/12 11:03:31 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Array<T> & Array<T>::operator=(Array<T> const & src)
 		if (this->_elements != NULL)
 		{
 			std::cout << "this elements : " << this->_elements[0] << std::endl;
-			// delete[] this->_elements;
+			delete[] this->_elements;
 		}
 		this->_elements = new T[src._size];
 		this->_size = src._size;
@@ -75,7 +75,7 @@ const char* Array<T>::InvalidIndexException::what() const throw()
 template<typename T> 
 T & Array<T>::operator[](std::size_t i) 
 {
-	if (i > this->size() || i < 0)
+	if (i >= this->size() || i < 0)
 		throw(Array<T>::InvalidIndexException());
 	else
 		return (this->_elements[i]);

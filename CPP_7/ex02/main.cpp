@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:18:06 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/05 10:23:19 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/12 11:06:40 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,13 @@ int main(int, char**)
     }
     //SCOPE
     { 
-		std::cout << "size of numbers"<< numbers.size() << std::endl;
 		std::cout << "----" << std::endl;
-        Array<int> tmp = numbers;
+        Array<int> tmp;
 		std::cout << "size of numbers"<< numbers.size() << std::endl;
 		std::cout << "size of tmp"<< tmp.size() << std::endl;
-        // tmp = numbers;
+        tmp = numbers;
 		std::cout << "size of numbers"<< numbers.size() << std::endl;
 		std::cout << "size of tmp"<< tmp.size() << std::endl;
-		// std::cout << "size of test"<< test.size() << std::endl;
     }
     for (int i = 0; i < MAX_VAL; i++)
     {
@@ -44,14 +42,14 @@ int main(int, char**)
             return 1;
         }
     }
-    // try
-    // {
-    //     numbers[-2] = 0;
-    // }
-    // catch(const std::exception& e)
-    // {
-    //     std::cerr << e.what() << '\n';
-    // }
+    try
+    {
+        numbers[-2] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
     try
     {
         numbers[MAX_VAL] = 0;
@@ -65,6 +63,6 @@ int main(int, char**)
     {
         numbers[i] = rand();
     }
-    delete [] mirror;//
+    delete [] mirror;
     return 0;
 }
