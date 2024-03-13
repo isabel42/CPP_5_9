@@ -4,7 +4,7 @@ OBJS 	= ${SRCS:.cpp=.o}
 
 NAME 	= a.out
 
-CC		= g++
+CC		= c++
 
 RM		= rm -f
 
