@@ -1,4 +1,5 @@
-SRCS	= main.cpp
+SRCS	= main.cpp \
+			Span.cpp
 
 OBJS 	= ${SRCS:.cpp=.o}
 
@@ -14,7 +15,7 @@ CFLAGS	= -Wextra -Wall -Werror -std=c++98
 			${CC} ${CFLAGS} -c $< -o ${<:.cpp=.o}
 
 ${NAME}: 	${OBJS}
-			${CC} ${OBJS}
+			${CC} ${OBJS} -o ${NAME} 
 
 all:		${NAME}
 
@@ -27,3 +28,5 @@ fclean: 	clean
 re:			fclean all
 
 .PHONY:		all clean fclean re
+
+
