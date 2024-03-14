@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:21:19 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/13 17:06:57 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/14 12:23:13 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+
 
 class Span
 {
@@ -30,9 +31,13 @@ class Span
 		Span & operator=(Span const &src);
 		
 		unsigned int getSize() const;
+		std::vector<int> get_entiers() const;
 		void addNumber(int n);
 		unsigned int shortestSpan() const;
 		unsigned int longestSpan() const;
+
+		void addRange(int first, int last);
+		void addVector(std::vector<int> src);
 };
 
 #endif
