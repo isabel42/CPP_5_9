@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:25:27 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/14 12:24:40 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/14 13:36:23 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ Span & Span::operator=(Span const &src)
 
 void Span::addNumber(int nb)
 {
-	if (this->_entiers.size() < this->_n)
-		this->_entiers.push_back(nb); 
-	else
-		throw (std::out_of_range("vector is already ful"));
+	if (this->_entiers.size() >= this->_n)
+		throw (std::out_of_range("Vector is already full."));
+	this->_entiers.push_back(nb); 
+	std::cout << "Value "<< nb << " was added to the Span." << std::endl;
+	
 }
 
 unsigned int Span::getSize() const
@@ -57,7 +58,7 @@ std::vector<int> Span::get_entiers() const
 unsigned int Span::longestSpan() const
 {
 	if (this->getSize() < 2)
-		throw (std::length_error("vector size is 1, cannot have a span"));
+		throw (std::length_error("Vector size is 1, cannot have a span."));
 	std::vector<int> cp_entiers;
 	cp_entiers = this->_entiers;
 	std::sort(cp_entiers.begin(), cp_entiers.end());
@@ -67,7 +68,7 @@ unsigned int Span::longestSpan() const
 unsigned int Span::shortestSpan() const
 {
 	if (this->getSize() < 2)
-		throw (std::length_error("vector size is 1, cannot have a span"));
+		throw (std::length_error("Vector size is 1, cannot have a span."));
 	int ret;
 	std::vector<int> cp_entiers;
 	cp_entiers = this->_entiers;
@@ -83,18 +84,30 @@ unsigned int Span::shortestSpan() const
 
 void Span::addRange(int first, int last)
 {
-	unsigned int s = last - first;
-	if (this->_n - this->getSize() < s)
-		throw (std::length_error("vector cannot host that big range"));
-	if ()
-	for (int i = first ; i <= last ; i++)
-		this->addNumber(i);
+	int s = last - first;
+	unsigned int us;
+	if (s < 0)
+		us = s * (-1);
+	else
+		us = s;
+	if (this->_n - this->getSize() < us)
+		throw (std::length_error("Vector cannot host that big range."));
+	if ( first > last )
+	{
+		for (int i = first ; i >= last ; i--)
+			this->addNumber(i);
+	}
+	else
+	{
+		for (int i = first ; i <= last ; i++)
+			this->addNumber(i);
+	}
 }
 
 void Span::addVector(std::vector<int> src)
 {
 	if (this->_n - this->getSize() < src.size())
-		throw (std::length_error("vector cannot host that big range"));
+		throw (std::length_error("Vector cannot host that big range."));
 	for (std::vector<int>::iterator it = src.begin(); it < src.end(); it++)
 		this->addNumber(*it);
 }
