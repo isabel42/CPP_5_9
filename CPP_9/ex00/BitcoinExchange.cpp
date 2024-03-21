@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 10:26:00 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/20 17:12:11 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/21 17:24:41 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void BitcoinExchange::GetOutput(const std::string &file)
 	std::string date;
 	char delim;
 	double nb;
+	std::map<std::string, double>::iterator it;
 	
 	std::getline (MyReadFile, line); //Skype header line
 	while (std::getline (MyReadFile, line)) 
@@ -92,6 +93,7 @@ void BitcoinExchange::GetOutput(const std::string &file)
 		if (!(line_stream >> date >> delim >> nb))
 		{
 			std::cerr << "Error: Could not parse => " << line << std::endl;
+			continue;
 		}
 		if (!DateOk(date) || !ValueOk(nb))
 			continue ;
@@ -100,9 +102,22 @@ void BitcoinExchange::GetOutput(const std::string &file)
 			std::cerr << "Error: bad input => " << line << std::endl;
 			continue;
 		}
+		it = this->data_.lower_bound(date);
+		if (it->first != date && it != data_.begin()) 
+			--it;
+		if (it != data_.end() || !data_.empty())
+			std::cout << date << " => " << nb << " = " <<  it->second << std::endl;
 	}
-		
-		std::map<std::string, double>::iterator it = this->data_.upper_bound(date);
-		// std::cout << date << std::endl; //" => " << nb << " = " <<  nb * it->second << std::endl;
-		std::cout << date << " => " << nb << " = " <<  it->second << std::endl;
 }
+	
+BitcoinExchange::~BitcoinExchange(){}
+BitcoinExchange::BitcoinExchange(BitcoinExchange const &src)
+{
+	*this = src;
+}
+BitcoinExchange & BitcoinExchange::operator=(BitcoinExchange const &src)
+{
+	this->data_ = src.data_;
+	return (*this);
+}
+
