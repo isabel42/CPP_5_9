@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 17:07:03 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/21 20:53:52 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:16:13 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ class RPN
 {
 	private:
 		std::stack<int> numbers;
-		std::stack<char> sign;
 		
 	public:
 		RPN();
@@ -28,7 +27,13 @@ class RPN
 		~RPN();
 		RPN & operator=(RPN const &src);
 		
-		int TreatInput(std::string const & input);
+		void TreatInput(std::string const & input);
+		void ResolveStack(const char c);
+		int getTop();
+		void add();
+		void subs();
+		void mult();
+		void div();
 		
 };
 

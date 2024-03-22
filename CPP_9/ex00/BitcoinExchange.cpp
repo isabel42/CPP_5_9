@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 10:26:00 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/21 17:24:41 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/22 13:50:26 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ bool BitcoinExchange::DateOk(const std::string &date)
 			
 	}
 	if (delim1 != '-' || delim2 != '-' || month > 12 || month < 1 || day > 31 || day < 1 
+		|| (year < 2009 || (year == 2009 && day == 1 && month == 1 && day == 1))
 		|| (day > 30 && (month == 4 || month == 6 || month == 9 || month == 11))
 		|| (day > 29 && month == 2)
 		|| (day > 28 && (month == 2 && (year % 4 != 0 || (year % 4 == 0 && year % 100 == 0 && year % 400 != 0)))))

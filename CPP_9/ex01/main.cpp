@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:26:48 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/21 22:11:26 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:54:38 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,31 +20,16 @@ int main(int argc, char **argv)
 	if (argc != 2)
 		return 0;
 	
-	int t = 0;
 	RPN test;
-	// RPN test(void);
 	
-	try{
-		
-	t = test.TreatInput(argv[1]);
+	try
+	{	
+		test.TreatInput(argv[1]);
+		std::cout << test.getTop() << std::endl;
 	}
 	catch(const std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	std::cout << t << std::endl;
 
-	// BitcoinExchange test("data.csv");
-	// test.GetOutput(argv[1]);
-	
-	// std::stack<int> numbers;
-	// std::stack<char> sign;
-
-	// int test;
-	// test = std::atoi(argv[1]);
-	// if (test >= 0 && test < 10)
-	// 	std::cout << "yes" << std::endl;
-	// else
-	// 	std::cout << "noooooo" << std::endl;
-	
 }
