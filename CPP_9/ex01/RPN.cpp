@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 17:06:29 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/22 14:16:47 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:34:33 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void RPN::TreatInput(std::string const &input)
 			sign = 1;
 			flag_digit = true;
 		}
-		else if (!flag_digit && input[i] == '-' && input[i+1] && isdigit(input[i+1]))
+		else if (!flag_digit && input[i] == '-' && input[i + 1] && isdigit(input[i + 1]))
 		{
 			sign = -1;
 			continue;	
