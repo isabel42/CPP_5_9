@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 17:06:29 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/21 22:00:50 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/21 22:15:09 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,34 +37,38 @@ int RPN::TreatInput(std::string const &input)
 	bool flag_digit = false;
 	bool flag_sign = false;
 	bool flag_block = false;
-	for (std::size_t i = 0; input[i]!=std::string::npos; i++ )
+	int res = 0;
+	for (std::size_t i = 0; i < input.size(); i++ )
 	{
-	if (isspace(input[i]))
-	{
-		flag_digit = false;
-		flag_sign = false;
-		continue ;
-	}
-	if (flag_digit || flag_sign)
-		throw (std::runtime_error("Syntax error"));
-	if (isdigit(input[i]))
-	{
-		if (flag_block)
+		if (isspace(input[i]))
 		{
-			res = ...
-			flag_block = false;
+			flag_digit = false;
+			flag_sign = false;
+			continue ;
+		}
+		else if (flag_digit || flag_sign)
+			throw (std::runtime_error("Syntax error"));
+		else if (isdigit(input[i]))
+		{
+			if (flag_block)
+			{
+				res = 10 + res;
+				flag_block = false;
+			}
+			else
+				this->numbers.push(input[i] - '0');
+			flag_digit = true;
+		}
+		else if (input[i] == '+' || input[i] == '-' || input [i] == '/' || input[i] == '*')
+		{
+			this->sign.push(input[i]);
+			flag_digit = true;
+			flag_block = true;
 		}
 		else
-			insert into digit stack
-		flag_digit = true;
-	}
-	if (input[i] == '+' || input[i] == '-' || input [i] == '/' || input[i] == '*')
-	{
-		insert into sign stack
-		flag_digit = true;
-		flag_block = true;
-	}
-		std::cout << input[i]<< "*";
+		{
+			throw (std::runtime_error("Syntax error"));
+		}
 	}
 	return res;
 }

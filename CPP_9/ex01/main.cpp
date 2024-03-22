@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:26:48 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/21 20:47:10 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/21 22:11:26 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,14 @@ int main(int argc, char **argv)
 	RPN test;
 	// RPN test(void);
 	
+	try{
+		
 	t = test.TreatInput(argv[1]);
+	}
+	catch(const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	std::cout << t << std::endl;
 
 	// BitcoinExchange test("data.csv");
