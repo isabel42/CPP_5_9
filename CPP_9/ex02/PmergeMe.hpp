@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 14:39:02 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/22 15:58:50 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:57:52 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <deque>
 
 class PmergeMe
 {
 	private:
+		std::list <std::list<int> > _list_nested;
 		std::list <int>	_list;
-		std::vector <int> _vector;
+		std::deque <int> _deque;
 		
 	public:
 		PmergeMe();
@@ -30,10 +32,10 @@ class PmergeMe
 		PmergeMe(PmergeMe &src);
 		PmergeMe & operator=(PmergeMe &src);
 
-		std::list <int> getList();
-		std::vector <int> getVector();
-		// FJList();
-		// FJVector();
+		void printNestedList();
+		void list_cut(std::list <int> simple_list);
+		std::list<int> getSimpleList();
+
 		
 };
 
