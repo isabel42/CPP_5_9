@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 14:38:56 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/22 16:01:57 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/26 10:12:16 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,3 +67,5 @@ std::vector <int> PmergeMe::getVector()
 // {
 	
 // }
+
+// https://github.com/izenynn/cpp-modules/blob/main/cpp-module-09/ex02/PmergeMe.hpp
