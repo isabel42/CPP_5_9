@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 14:38:56 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/26 17:37:28 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:11:10 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,17 +143,106 @@ std::list <int> PmergeMe::getSimpleList()
 
 void PmergeMe::Merge()
 {
-    std::list <int> sol;
     std::list<std::list<int> >::iterator nested_list_itr;
-    for (nested_list_itr = this->_list_nested.begin(); 
-        nested_list_itr != this->_list_nested.end(); 
+	for (nested_list_itr = this->_list_nested.begin(); 
+    	nested_list_itr != this->_list_nested.end(); 
         ++nested_list_itr) 
-        {
-            if (nested_list_itr.size() == 1)
-                continue;
-            if(nested_list_itr != _list_nested.end() && 
-                (nested_list_itr + 1).size() == nested_list_itr.size())
-            
-        }
-    
+		{
+			std::list<int>& single_list_pointer = *nested_list_itr;
+			std::list<std::list<int> >::iterator nested_list_itr_prev = std::prev(nested_list_itr);
+			std::list<int>& single_list_pointer_prev = *(nested_list_itr_prev);
+			std::list<std::list<int> >::iterator nested_list_itr_next = std::next(nested_list_itr);
+			std::list<int>& single_list_pointer_next = *(nested_list_itr_next);
+			if (single_list_pointer.size() == 1)
+				continue;
+			else
+			{
+				if (single_list_pointer.size() == single_list_pointer_next.size())
+				{
+					if (single_list_pointer_prev.size() == 1 && (std::next(nested_list_itr_next) == this->_list_nested.end() || std::next(nested_list_itr_next)->size() == 1))
+					{
+						std::cout << "Sort three: prev, this and next" << std::endl;
+						std::list <int> sol = this->Consol_three(single_list_pointer, single_list_pointer_next, single_list_pointer_prev);
+						this->_list_nested.erase(nested_list_itr_prev);
+						this->_list_nested.insert(nested_list_itr,sol);
+						// nested_list_itr_next = std::next(nested_list_itr);
+						// this->_list_nested.erase(nested_list_itr_next );
+
+						// std::list<std::list<int> >::iterator nested_list_itr_next_prev = std::prev(nested_list_itr_next);
+						// this->_list_nested.erase(nested_list_itr_next_prev );
+						
+						// this->_list_nested.erase(nested_list_itr_prev );
+						++nested_list_itr;
+						
+					}
+					else
+					{	
+						std::cout << "Sort two. This and next" << std::endl;
+						// std::list <int> sol = this->Consol(single_list_pointer, single_list_pointer_next);
+						++nested_list_itr;
+					}
+				}
+				else
+				{
+					std::cout << "Sort two: prev and this. " << std::endl;
+					std::list <int> sol = this->Consol(single_list_pointer, single_list_pointer_prev);
+					this->_list_nested.insert(nested_list_itr,sol);
+					this->_list_nested.erase(nested_list_itr_prev );
+					++nested_list_itr--;
+					nested_list_itr_next = std::next(nested_list_itr);
+					this->_list_nested.erase(nested_list_itr_next );
+				}
+			}
+		}
+}
+
+std::list <int> PmergeMe::Consol(std::list <int> first, std::list <int> second)
+{
+    std::list <int> sol;
+	std::list<int>::iterator it1 = first.begin();
+	std::list<int>::iterator it2 = second.begin();
+
+	while(it1 != first.end() || it2 != second.end())
+	{
+		if (((*it1 < *it2 || it2 == second.end()) && it1 != first.end()))
+		{
+			sol.push_back(*it1);
+			it1++;
+		}
+		else
+		{
+			sol.push_back(*it2);
+			it2++;
+		}
+	}
+	return (sol);
+}
+
+
+std::list <int> PmergeMe::Consol_three(std::list <int> first, std::list <int> second, std::list <int> third)
+{
+    std::list <int> sol;
+	std::list<int>::iterator it1 = first.begin();
+	std::list<int>::iterator it2 = second.begin();
+	std::list<int>::iterator it3 = third.begin();
+
+	while(it1 != first.end()|| it2 != second.end() || it3 != third.end())
+	{
+		if ((((*it1 <= *it2)|| it2 == second.end()) && (*it1 < *it3 || it3 == third.end())) && it1 != first.end())
+		{
+			sol.push_back(*it1);
+			it1++;
+		}
+		else if ((*it2 < *it3 || it3 == third.end()) && it2 != second.end())
+		{
+			sol.push_back(*it2);
+			it2++;
+		}
+		else 
+		{
+			sol.push_back(*it3);
+			it3++;
+		}
+	}
+	return (sol);
 }

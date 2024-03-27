@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:26:48 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/22 12:54:38 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/26 18:22:46 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 	{	
 		test.TreatInput(argv[1]);
 		std::cout << test.getTop() << std::endl;
+		
 	}
 	catch(const std::exception &e)
 	{
