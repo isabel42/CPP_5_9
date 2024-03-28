@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 14:39:02 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/27 14:35:52 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/28 09:30:05 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ class PmergeMe
 		PmergeMe(PmergeMe &src);
 		PmergeMe & operator=(PmergeMe &src);
 
+		std::list<int> getSimpleList();
 		void printNestedList();
 		void list_cut(std::list <int> simple_list);
-		std::list<int> getSimpleList();
-		void Merge();
+		void MergeList();
 		std::list <int> Consol(std::list <int> first, std::list <int> second);
 		std::list <int> Consol_three(std::list <int> first, std::list <int> second, std::list <int> third);
 		

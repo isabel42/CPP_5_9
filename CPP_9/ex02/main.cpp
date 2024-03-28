@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 14:38:53 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/27 16:16:36 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/28 09:30:16 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 		PmergeMe test(argc, argv);
 		test.list_cut(test.getSimpleList());
 		test.printNestedList();
-		test.Merge();
+		test.MergeList();
 		std::cout << std::endl;
 		test.printNestedList();
 		std::list <int> sol = test.getSimpleList();

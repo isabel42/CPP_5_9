@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 14:38:56 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/27 17:11:10 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/28 09:30:01 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,63 @@ PmergeMe::PmergeMe(int argc, char **argv)
 		this->_list.push_back(std::atoi(argv[i]));
 	}
 }
+
+PmergeMe::~PmergeMe()
+{
+
+}
+
+PmergeMe::PmergeMe (PmergeMe &src)
+{
+	*this = src;
+}
+
+
+PmergeMe & PmergeMe::operator=(PmergeMe &src)
+{
+
+	this->_list_nested = src._list_nested;
+	this->_deque = src._deque;
+	return (*this);
+}
+
+std::list <int> PmergeMe::getSimpleList()
+{
+    return(this->_list);
+}
+
+void PmergeMe::printNestedList() 
+{ 
+    std::cout << "[\n"; 
+ 
+    // nested_list`s iterator(same type as nested_list) 
+    // to iterate the nested_list 
+    std::list<std::list<int> >::iterator nested_list_itr; 
+ 
+    // Print the nested_list 
+    for (nested_list_itr = this->_list_nested.begin(); 
+        nested_list_itr != this->_list_nested.end(); 
+        ++nested_list_itr) { 
+ 
+        std::cout << " ["; 
+ 
+        // normal_list`s iterator(same type as temp_list) 
+        // to iterate the normal_list 
+        std::list<int>::iterator single_list_itr; 
+ 
+        // pointer of each list one by one in nested list 
+        // as loop goes on 
+        std::list<int>& single_list_pointer = *nested_list_itr; 
+ 
+        for (single_list_itr = single_list_pointer.begin(); 
+            single_list_itr != single_list_pointer.end(); 
+            single_list_itr++) { 
+            std::cout << " " << *single_list_itr << " "; 
+        } 
+        std::cout << "]\n"; 
+    } 
+    std::cout << "]\n"; 
+} 
 
 void PmergeMe::list_cut(std::list <int> list_simple)
 {
@@ -83,70 +140,14 @@ void PmergeMe::list_cut(std::list <int> list_simple)
     }
  }
 
-
-PmergeMe::~PmergeMe()
-{
-
-}
-
-PmergeMe::PmergeMe (PmergeMe &src)
-{
-	*this = src;
-}
-
-
-PmergeMe & PmergeMe::operator=(PmergeMe &src)
-{
-
-	this->_list_nested = src._list_nested;
-	this->_deque = src._deque;
-	return (*this);
-}
-
-void PmergeMe::printNestedList() 
-{ 
-    std::cout << "[\n"; 
- 
-    // nested_list`s iterator(same type as nested_list) 
-    // to iterate the nested_list 
-    std::list<std::list<int> >::iterator nested_list_itr; 
- 
-    // Print the nested_list 
-    for (nested_list_itr = this->_list_nested.begin(); 
-        nested_list_itr != this->_list_nested.end(); 
-        ++nested_list_itr) { 
- 
-        std::cout << " ["; 
- 
-        // normal_list`s iterator(same type as temp_list) 
-        // to iterate the normal_list 
-        std::list<int>::iterator single_list_itr; 
- 
-        // pointer of each list one by one in nested list 
-        // as loop goes on 
-        std::list<int>& single_list_pointer = *nested_list_itr; 
- 
-        for (single_list_itr = single_list_pointer.begin(); 
-            single_list_itr != single_list_pointer.end(); 
-            single_list_itr++) { 
-            std::cout << " " << *single_list_itr << " "; 
-        } 
-        std::cout << "]\n"; 
-    } 
-    std::cout << "]\n"; 
-} 
-
-std::list <int> PmergeMe::getSimpleList()
-{
-    return(this->_list);
-}
-
-void PmergeMe::Merge()
+void PmergeMe::MergeList()
 {
     std::list<std::list<int> >::iterator nested_list_itr;
-	for (nested_list_itr = this->_list_nested.begin(); 
-    	nested_list_itr != this->_list_nested.end(); 
-        ++nested_list_itr) 
+	while (this->_list_nested.size() > 1)
+	{
+		for (nested_list_itr = this->_list_nested.begin(); 
+			nested_list_itr != this->_list_nested.end(); 
+			++nested_list_itr) 
 		{
 			std::list<int>& single_list_pointer = *nested_list_itr;
 			std::list<std::list<int> >::iterator nested_list_itr_prev = std::prev(nested_list_itr);
@@ -165,21 +166,21 @@ void PmergeMe::Merge()
 						std::list <int> sol = this->Consol_three(single_list_pointer, single_list_pointer_next, single_list_pointer_prev);
 						this->_list_nested.erase(nested_list_itr_prev);
 						this->_list_nested.insert(nested_list_itr,sol);
-						// nested_list_itr_next = std::next(nested_list_itr);
-						// this->_list_nested.erase(nested_list_itr_next );
-
-						// std::list<std::list<int> >::iterator nested_list_itr_next_prev = std::prev(nested_list_itr_next);
-						// this->_list_nested.erase(nested_list_itr_next_prev );
-						
-						// this->_list_nested.erase(nested_list_itr_prev );
 						++nested_list_itr;
+						this->_list_nested.erase(std::prev(nested_list_itr));
+						--nested_list_itr;
+						this->_list_nested.erase(std::next(nested_list_itr));
 						
 					}
 					else
 					{	
 						std::cout << "Sort two. This and next" << std::endl;
-						// std::list <int> sol = this->Consol(single_list_pointer, single_list_pointer_next);
+						std::list <int> sol = this->Consol(single_list_pointer, single_list_pointer_next);
+						this->_list_nested.insert(nested_list_itr,sol);
 						++nested_list_itr;
+						this->_list_nested.erase(std::prev(nested_list_itr));
+						--nested_list_itr;
+						this->_list_nested.erase(std::next(nested_list_itr));
 					}
 				}
 				else
@@ -194,6 +195,7 @@ void PmergeMe::Merge()
 				}
 			}
 		}
+	}
 }
 
 std::list <int> PmergeMe::Consol(std::list <int> first, std::list <int> second)
