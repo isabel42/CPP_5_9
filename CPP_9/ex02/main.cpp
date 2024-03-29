@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 14:38:53 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/28 15:05:51 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/29 09:38:04 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int main(int argc, char **argv)
 {
-	std::list <int> sol;
 	if (argc < 2)
 		return -1;
 	try
