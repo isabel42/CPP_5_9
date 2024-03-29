@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 14:38:53 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/28 15:03:20 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:05:51 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 		{ 
 			std::cout << " " << *it << " "; 
 		}
-		std::cout << std::endl << std::endl;
+		std::cout << std::endl;
 		
 		clock_t start_l = clock();
 		input.list_cut(input.getSimpleList());
