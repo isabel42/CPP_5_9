@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 10:26:00 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/22 13:50:26 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/04/11 12:26:57 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void BitcoinExchange::GetOutput(const std::string &file)
 		if (it->first != date && it != data_.begin()) 
 			--it;
 		if (it != data_.end() || !data_.empty())
-			std::cout << date << " => " << nb << " = " <<  it->second << std::endl;
+			std::cout << date << " => " << nb << " = " <<  it->second * nb << std::endl;
 	}
 }
 	
