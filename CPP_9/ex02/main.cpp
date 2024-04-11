@@ -6,7 +6,7 @@
 /*   By: itovar-n <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 14:38:53 by itovar-n          #+#    #+#             */
-/*   Updated: 2024/03/29 09:38:04 by itovar-n         ###   ########.fr       */
+/*   Updated: 2024/04/11 12:33:13 by itovar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,12 @@ int main(int argc, char **argv)
 		std::cout << "Time to process a range of " << input_vector.size() << " elements with std::list container: " << std::endl;
 		std::cout << "   Sorting:" << time_l1 << " us" << std::endl;
 		std::cout << "   Data management part (merge):" << time_l2 << " us" << std::endl;
+		std::cout << "   TOTAL time: " << time_l1 + time_l2 << " us" << std::endl;
 		std::cout << std::endl << "----VECTOR----" << std::endl;
 		std::cout << "Time to process a range of " << input_vector.size() << " elements with std::vector container: " << std::endl;
 		std::cout << "   Sorting:" << time_v1 << " us" << std::endl;
 		std::cout << "   Data management part (merge):" << time_v2 << " us" << std::endl;
+		std::cout << "   TOTAL time: " << time_v1 + time_v2 << " us" << std::endl;
 	}
 	catch(const std::exception &e)
 	{
